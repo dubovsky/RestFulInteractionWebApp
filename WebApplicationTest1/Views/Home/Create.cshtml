@@ -1,0 +1,39 @@
+﻿@model WebApplicationTest1.Models.Mobile
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>Now you can add a new mobile</h2>
+
+
+
+
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-4">
+            <label>Type mobile name here</label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <label>Choose the picture</label>
+            <input type="file" name="imageUpload" class="form-control" accept=".jpg, .png" />
+        </div>
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+}
+<br />
+<a href="@Url.Action("Index")" class="btn btn-link">Back</a>
+
+
+
+
